@@ -5,7 +5,7 @@ The Roomle Configurator can display 3d products, i.e. furniture, in high quality
 ### First steps to integrate the Roomle Configurator
 The easiest way to integrate the Roomle Configurator API is to see a simple example. The following web page displays a button which loads the configurator when clicked.
 
-```javascript
+```html
 <!DOCTYPE html>
 <html>
 	<head>
@@ -48,6 +48,7 @@ The easiest way to integrate the Roomle Configurator API is to see a simple exam
 ```
 
 Even in this simple example, there are a few things to note:
+
 1. We create a div element named "roomleContainer" to hold the Configurator.
 2. We define some JavasScript that creates a configurator in the div.
 3. We load the roomle configurator API JavaScript using a script tag.
@@ -57,7 +58,7 @@ A basic sample can be found on [https://www.roomle.com/app/assets/scripts/config
 
 ### Loading the Roomle Configurator API
 To load the Roomle Configurator API, use a script tag like the one in the following example:
-```javascript
+```html
 <script async defer
 	src="http://roomle.com/app/assets/scripts/configurator/configurator-api.js">
 </script>
@@ -128,18 +129,21 @@ RoomleConfigurator.getPerspectiveImage('fantoni_1:FW_Singledesk:04F48A98A90AF8E9
 
 #### Setting the language
 The language of the configurator can be set as argument of the RoomleConfiguration.init method. The following country codes are supported:
-* 'en'
-* 'de'
-* 'zh-Hans'
-* 'it'
-* 'fr'
-* 'es'
-* 'hi'
-* 'ja'
-* 'pt'
-* 'pt-BR'
-* 'pl'
-* 'ru'
+
+| Code | Language |
+|------|----------|
+| `en` | English |
+| `de` | German |
+| `zh-Hans` | Chinese |
+| `it` | Italian |
+| `fr` | French |
+| `es` | Spanish |
+| `hi` | Hindu |
+| `ja` | Japanese |
+| `pt` | Portuguese |
+| `pt-BR` | Brazilian Portuguese |
+| `pl` | Polish |
+| `ru` | Russian |
 
 See the documentation for more functions: [docs/js/api.md](docs/js/api.md)
 
