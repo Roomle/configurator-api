@@ -53,7 +53,7 @@ Even in this simple example, there are a few things to note:
 3. We load the roomle configurator API JavaScript using a script tag.
 4. The Configurator starts loading when the button is clicked.
 
-A basic sample can be found on [<[baseUrl]>assets/scripts/configurator/configurator-sample.html](<[baseUrl]>assets/scripts/configurator/configurator-sample.html)
+A basic sample can be found on [https://www.roomle.com/app/assets/scripts/configurator/configurator-sample.html](https://www.roomle.com/app/assets/scripts/configurator/configurator-sample.html)
 
 ### Loading the Roomle Configurator API
 To load the Roomle Configurator API, use a script tag like the one in the following example:
@@ -88,7 +88,7 @@ The JavaScript class that represents a Roomle Configurator is the RoomleConfigur
 
 When you create a new configurator instance, you specify a div HTML element in the page as a container for the configurator. HTML nodes are children of the JavaScript document object, and we obtain a reference to this element via the document.getElementById() method inside the init method. This way you just need to privide the id of your div element (i.e. 'roomleContainer').
 
-You can find more details about its definition in the documentation: [<[baseUrl]>assets/scripts/configurator/configurator-doc/RoomleConfigurator.html](<[baseUrl]>assets/scripts/configurator/configurator-doc/RoomleConfigurator.html)
+You can find more details about its definition in the documentation: [https://www.roomle.com/app/assets/scripts/configurator/configurator-doc/RoomleConfigurator.html](https://www.roomle.com/app/assets/scripts/configurator/configurator-doc/RoomleConfigurator.html)
 
 #### Loading an existing configuration
 You can use the following code snippet to load a configuration.
