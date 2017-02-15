@@ -173,5 +173,8 @@ We strongly recommend to display some different configurations of the product wh
 * Internet Explorer: version 10+
 * Firefox, Safari, Chrome: newest and previous version
 
+### Notice
+[Try out our full featured room planner. It's for free :-)](https://www.roomle.com/en/floorplanner)
+
 
 
