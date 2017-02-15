@@ -1,1 +1,451 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table style="width:100%;">
+    <tr>
+        <td style="width: 100%;">
+            <div id="roomle-container" style="width: 100%; height: 90vh; background-color: yellowgreen;">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h2 id="init">INIT</h2>
+
+            <div id="send">
+                <h3>Select your product</h3>
+                <img src="http://localhost:4200/app/assets/images/config1.png">
+            </div>
+            <div id="send2">
+                <h3>&nbsp;</h3>
+                <img src="http://localhost:4200/app/assets/images/config2.png">
+            </div>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td>
+
+            <h2 id="send3">GET CURRENT PARTS</h2>
+
+            <h2 id="send4">GET PRICE</h2>
+
+            <div>
+                <h2 id="send18">Load config by dynamic id</h2>
+                <textarea id="dynamic-id" rows="20" cols="50"></textarea>
+                <button id="dynamic-id-btn">LOAD</button>
+            </div>
+
+            <div>
+                <h2 id="send19">Load component dynamic by json</h2>
+                <textarea id="dynamic-component" rows="20" cols="50"></textarea>
+                <button id="dynamic-component-btn">LOAD</button>
+                <div id="dynamic-component-msg"></div>
+            </div>
+            <!-- <h2 id="send5">GET PARTS of a certain configuration</h2> -->
+
+            <h2 id="send6">Images BASE64</h2>
+
+            <div>
+                <h2 id="send12">Images URL</h2>
+
+                <div id="topimage"></div>
+                <div id="perspectiveimage"></div>
+            </div>
+            <h2 id="send7">Current config</h2>
+
+            <h2 id="send10">Load config by id</h2>
+
+            <h2 id="send11">Load config by id</h2>
+
+            <h2 id="send21">Load config by NULL</h2>
+
+            <h2 id="send22">Load tag by id "usm_root"</h2>
+
+            <h2 id="send9">Save</h2>
+
+            <h2 id="send13">getParts by Id</h2>
+
+            <h2 id="send14">getPrice by Id</h2>
+
+            <h2 id="send15">get Perspecitve Image by id</h2>
+
+            <h2 id="send16">get top image by id</h2>
+
+            <h2 id="send17">remove change listener 3</h2>
+
+            <h2 id="send20">Did Checkout</h2>
+
+            <h2 id="send8">Current config id</h2>
+
+            <h2 id="print">Print</h2>
+        </td>
+    </tr>
+</table>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/configurator-api.js"></script>
+<script>
+    var state = {
+        isFullscreen: false
+    };
+    $(document).ready(function () {
+        RoomleConfigurator.init('design-bestseller', 'roomle-container',
+                //'{"componentId":"usm:frame"}',
+                {isTag: true, tag: "usm_root"},
+
+                {
+                    //RoomleConfigurator.init('design-bestseller', 'roomle-container', '{"componentId":"usm:frame"}', {
+                    locale: 'en',
+                    sameOrigin: false, // ONLY SET THIS IF YOU EMBED THE CONFIGURATOR ON THE SAME ORIGIN AS THE ROOMLE API
+                    enableIOS: true,
+                    hideShare: false,
+                    showArButton: true,
+                    showAddButton: true,
+                    showBackButton: false,
+                    enablePrint: true,
+                    __alternativeUrl: 'https://alpha.roomle.com/app/',
+                    priceFormatter: function (currency, price) {
+                        return '# ' + currency + ' --> ' + price;
+                    },
+                    dimensionsFormatter: function (dimensions) {
+                        return (dimensions.x).toFixed(0) + ' x ' + (dimensions.y).toFixed(0) + ' x ' + (dimensions.z).toFixed(0) + ' mm';
+                    }
+
+                }, function () {
+                    //RoomleConfigurator.setOptions();
+                    RoomleConfigurator.setWebshopCallbackUrl('http://localhost?locale=de&configuration=__CONF_ID__');
+                    RoomleConfigurator.setFullscreenListener(function () {
+                        var elem = document.getElementById('roomle-container');
+                        var req = elem.requestFullScreen || elem.webkitRequestFullScreen || elem.mozRequestFullScreen;
+                        if (state.isFullscreen) {
+                            if (document.cancelFullScreen) {
+                                document.cancelFullScreen();
+                            } else if (document.mozCancelFullScreen) {
+                                document.mozCancelFullScreen();
+                            } else if (document.webkitCancelFullScreen) {
+                                document.webkitCancelFullScreen();
+                            }
+                        } else {
+                            req.call(elem);
+                        }
+                        state.isFullscreen = !state.isFullscreen;
+                    });
+
+                    var shareLinkGenerator = {
+                        protocol: 'https://',
+                        url: 'short.co/',
+                        create: function (configurationId) {
+                            var self = this;
+                            setTimeout(function () {
+                                RoomleConfigurator.setShareLink(self.protocol + self.url + configurationId);
+                            }, 3000);
+                        }
+                    };
+
+                    RoomleConfigurator.setShareButtonClickedCallback(function (id) {
+                        shareLinkGenerator.create(id);
+                    });
+
+
+                    RoomleConfigurator.addConfigurationLoadedListener(function () {
+                        RoomleConfigurator.getCurrentParts(function (parts) {
+                            console.log('parts');
+                            console.log(parts);
+                        });
+                    });
+
+                    //RoomleConfigurator.setAddToCartListener(function (cartItem) {
+                    RoomleConfigurator.setAddToCartListener(
+                            //{backgroundColor: '#ff0000', fontColor: '#ff00ff', text: 'CHECKOUT', visible: true},
+                            {
+                                visible: true,
+                                images: {
+                                    perspectiveImageSize: 1000, // optional
+                                    pixelPerMeter: 200 // optional
+                                }
+                            },
+                            function (cartItem) {
+                                console.log('setAddToCartListener');
+                                console.log(cartItem);
+                            }, function (error) {
+                                console.log('HAHA caught error setAddToCartListener "' + error + '"');
+                            });
+                });
+
+        $('#init').click(function () {
+            //umdasch:Universal01
+            // umdasch:VARO-124
+            //umdasch:CarreDamen004
+            //RoomleConfigurator.init('roomle-container');
+            //RoomleConfigurator.init('roomle-container', 'zh-Hans', '{"componentId":"usm:frame"}', function () {
+            RoomleConfigurator.init('roomle-container', 'de', {
+                isTag: true,
+                tag: "usm_root",
+                //    _alternativeUrl: 'https://alpha.roomle.com/app/'
+            }/*'usm:frame:DA2DDE1479B87E05FEB1EEFF01992E79E3D1E77AF568A9901A5A2152A635680B'*/, function () {
+                //RoomleConfigurator.setAddToCartListener(function (cartItem) {
+                RoomleConfigurator.setAddToCartListener(
+                        //{backgroundColor: '#ff0000', fontColor: '#ff00ff', text: 'CHECKOUT', visible: true},
+                        {visible: true},
+                        function (cartItem) {
+                            console.log('setAddToCartListener');
+                            console.log(cartItem);
+                        }, function (error) {
+                            console.log('HAHA caught error setAddToCartListener "' + error + '"');
+                        });
+            });
+            //RoomleConfigurator.init('roomle-container', '{"componentId":"fantoni_1:FW_Singledesk"}');
+            //RoomleConfigurator.init('roomle-container', 'umdasch:263233:E4B6E78BD7CD80EDECE1188AAB92FA87013EB8A392C4C45E81BD8CC94C6DD44D');
+            //RoomleConfigurator.init('roomle-container', 'umdasch:263233:E4B6E78BD7CD80EDECE1188AAB92FA87013EB8A392C4C45E81BD8CC94C6DD44D', function () {
+            //    console.log("ROOMLE IS READY TO ROCK :)");
+            //});
+            //RoomleConfigurator.init('roomle-container', 'umdasch:CE250-0:16C5490A3E8108BC9F0560AC0919DE2216A4F2EA57ECE276F5248AC456EE0ADF');
+            //RoomleConfigurator.initWithoutWebGl('roomle-container', function () {
+            //    console.log("ROOMLE RAPI ONLY READY TO ROCK");
+            //});
+            //RoomleConfigurator.init('roomle-container', 'umdasch:CE250-0:4571A4F3159FDFAC4B250864D15F87E57DF1C2CB8DFA8C3A627025272CDF2014');
+        });
+
+        $('#send').click(function () {
+            RoomleConfigurator.loadConfiguration('{"componentId":"umdasch:CE250-0"}');
+        });
+        $('#send2').click(function () {
+            RoomleConfigurator.loadConfiguration('{"componentId":"umdasch:Universal01"}');
+        });
+
+        $('#send21').click(function () {
+            RoomleConfigurator.loadConfigurationId(null);
+        });
+
+
+        window.postMessage("RoomleLoaded", "*");
+
+        window.addEventListener('message', function (event) {
+            console.log("OUTSIDE addEventListener");
+            if (event.data === 'RoomleLoaded') {
+
+            }
+        }, false);
+
+        $('#send3').click(function () {
+            RoomleConfigurator.getCurrentParts(function (parts) {
+                console.log("getCurrentParts");
+                console.log(parts);
+            }, function (error) {
+                console.log('HAHA caught error getCurrentParts "' + error + '"');
+                console.log(error);
+            });
+        });
+
+        $('#send5').click(function () {
+            RoomleConfigurator.getParts('id', function (parts) {
+                console.log("getParts");
+                console.log(parts);
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+        $('#send20').click(function () {
+            RoomleConfigurator.didCheckout([{
+                configurationId: 'umdasch:CE250-0:4571A4F3159FDFAC4B250864D15F87E57DF1C2CB8DFA8C3A627025272CDF2014',
+                price: 99.99,
+                count: 3
+            }], function () {
+                console.log("didCheckout successfull");
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+        $('#send4').click(function () {
+            RoomleConfigurator.getCurrentPrice(function (price, currency) {
+                console.log("getCurrentPrice");
+                console.log(price);
+                console.log(currency);
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+        $('#send6').click(function () {
+            RoomleConfigurator.generateBase64ImagesOfCurrentConfiguration(function (topImage, perspectiveImage) {
+                console.log("generateImagesOfCurrentConfiguration");
+                console.log(topImage);
+                console.log(perspectiveImage);
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+
+        $('#send7').click(function () {
+            RoomleConfigurator.getCurrentConfiguration(function (configuration) {
+                console.log("getCurrentConfiguration");
+                console.log(configuration);
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+        $('#send8').click(function () {
+            RoomleConfigurator.getCurrentConfigurationId(function (hash) {
+                console.log("getCurrentConfigurationId");
+                console.log(hash);
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+
+        $('#send9').click(function () {
+            RoomleConfigurator.saveCurrentConfiguration(function (object) {
+                console.log("saveCurrentConfiguration");
+                console.log(object);
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+        $('#send10').click(function () {
+            var config = 'usm:frame:FCE233C177A44276B9AC61A54157A2D18A45FC157625D8827A4294EA39E2F040';
+            //var config = 'umdasch:CE250-0:AC30967BADC53F3D8EE312E037D610444E72DD1A76AE2691BB5F896396E18A34';
+            RoomleConfigurator.loadConfigurationId(config);
+        });
+
+        $('#send11').click(function () {
+            var config = 'usm:frame:3A9615BAC57EE2680D6AE1D814EC0D8DB13594CA0A9E39E597F0E87E5385F51A';
+            //var config = 'umdasch:CE250-0:AC30967BADC53F3D8EE312E037D610444E72DD1A76AE2691BB5F896396E18A34';
+            RoomleConfigurator.loadConfigurationId('umdasch:CE250-0:C3585827D5916D361A91B2881A53A99E613B72489B3596538DA2CE93E3AC2B99');
+        });
+
+        $('#send12').click(function () {
+            RoomleConfigurator.generateImagesOfCurrentConfiguration(function (topImage, perspectiveImage) {
+                console.log("generateImagesOfCurrentConfiguration");
+                console.log(topImage);
+                console.log(perspectiveImage);
+                $('#topimage').html('<a href="' + topImage + '" target="_blank">topImage</a>');
+                $('#perspectiveimage').html('<a href="' + perspectiveImage + '" target="_blank">perspectiveImage</a>');
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+        $('#send13').click(function () {
+            //var config = 'usm:frame:3A9615BAC57EE2680D6AE1D814EC0D8DB13594CA0A9E39E597F0E87E5385F51A';
+            //var config = 'umdasch:CE250-0:AC30967BADC53F3D8EE312E037D610444E72DD1A76AE2691BB5F896396E18A34';
+            var config = 'umdasch:CE250-0:C3585827D5916D361A91B2881A53A99E613B72489B3596538DA2CE93E3AC2B99-859';
+            RoomleConfigurator.getParts(config, function (parts) {
+                console.log("getParts");
+                console.log(parts);
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+
+        $('#send14').click(function () {
+            var config = 'usm:frame:3A9615BAC57EE2680D6AE1D814EC0D8DB13594CA0A9E39E597F0E87E5385F51A';
+            //var config = 'umdasch:CE250-0:AC30967BADC53F3D8EE312E037D610444E72DD1A76AE2691BB5F896396E18A34';
+
+            RoomleConfigurator.getPrice(config, function (price, currency) {
+                console.log("getPrice");
+                console.log(price);
+                console.log(currency);
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+        $('#send22').click(function () {
+            RoomleConfigurator.loadTag('usm_root', function () {
+                console.log("tag loaded");
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+
+        $('#send15').click(function () {
+            var config = 'usm:frame:3A9615BAC57EE2680D6AE1D814EC0D8DB13594CA0A9E39E597F0E87E5385F51A';
+            //var config = 'umdasch:CE250-0:AC30967BADC53F3D8EE312E037D610444E72DD1A76AE2691BB5F896396E18A34';
+
+            RoomleConfigurator.getPerspectiveImage(config, function (perspectiveImage) {
+                console.log("getPerspectiveImage");
+                console.log(perspectiveImage);
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+        $('#print').click(function () {
+            RoomleConfigurator.openPrint();
+        });
+
+
+        $('#send16').click(function () {
+            var config = 'usm:frame:3A9615BAC57EE2680D6AE1D814EC0D8DB13594CA0A9E39E597F0E87E5385F51A';
+            //var config = 'umdasch:CE250-0:AC30967BADC53F3D8EE312E037D610444E72DD1A76AE2691BB5F896396E18A34';
+
+            RoomleConfigurator.getTopImage(config, function (topImage) {
+                console.log("getTopImage");
+                console.log(topImage);
+            }, function (error) {
+                console.log('HAHA caught error "' + error + '"');
+            });
+        });
+
+
+        RoomleConfigurator.addChangeListener(function (price) {
+            console.log('addChangeListener');
+            console.log(price);
+        });
+
+        RoomleConfigurator.addChangeListener(function (price) {
+            console.log('addChangeListener2');
+            console.log(price);
+        });
+
+        var changeListener3 = RoomleConfigurator.addChangeListener(function (price) {
+            console.log('addChangeListener3');
+            console.log(price);
+        });
+
+        $('#send17').click(function () {
+            RoomleConfigurator.removeChangeListener(changeListener3);
+        });
+
+        $('#dynamic-id-btn').click(function () {
+            var value = $('#dynamic-id').val();
+            var isId = (value && value.length >= 1 && value[0] === '{') ? false : true;
+            var method = (isId) ? 'loadConfigurationId' : 'loadConfiguration';
+            RoomleConfigurator[method](value, function () {
+                console.log("Configuration loaded");
+            }, function (error) {
+                console.error(error);
+            });
+        });
+
+        $('#dynamic-component-btn').click(function () {
+            var value = $('#dynamic-component').val();
+            $('#dynamic-component-msg').text('Loading component');
+            RoomleConfigurator.loadComponent(value, function () {
+                console.log("Component loaded");
+                $('#dynamic-component-msg').text('Component loaded!');
+                setTimeout(function () {
+                    $('#dynamic-component-msg').text();
+                }, 3000);
+            }, function (error) {
+                console.error(error);
+            });
+        });
+        //var testConfig = '{"children":[{"children":[{"children":[],"componentId":"umdasch:Schuh02","dockChild":"{0.00,-(0.00),0.00}","dockParent":"[{(-((Achse/2.00))+2.00),-((-(Tiefe)+100.00)),0.00},{((Achse/2.00)-2.00),-((-(Tiefe)+100.00)),0.00}]","dockPosition":"{-152.78,300.00,0.00}","parameters":{"BreiteWare":"179","DickeWare":"20","HoeheWare":"150"}},{"children":[],"componentId":"umdasch:Schuh02","dockChild":"{0.00,-(0.00),0.00}","dockParent":"[{(-((Achse/2.00))+2.00),-((-(Tiefe)+100.00)),0.00},{((Achse/2.00)-2.00),-((-(Tiefe)+100.00)),0.00}]","dockPosition":"{86.88,300.00,0.00}","parameters":{"BreiteWare":"179","DickeWare":"20","HoeheWare":"150"}}],"componentId":"umdasch:260814","dockChild":"{0.00,-(0.00),0.00}","dockParent":"[{(0.00-0.00),(-((-(Wandabstand)-30.00))-0.00),((Hoehe-150.00)-200.00)}]","dockPosition":"{0.00,110.00,1700.00}","parameters":{"Achse":"625.00","Fachboden":"umdasch:S04","Konsole":"umdasch:B07","Profil":"umdasch:M05","Tiefe":"400.00"}},{"children":[{"children":[],"componentId":"umdasch:DamenBluse07","dockChild":"{0.00,-(0.00),0.00}","dockParent":"[{(-((Achse/2.00))+2.00),-(-(Tiefe)),0.00},{((Achse/2.00)-2.00),-(-(Tiefe)),0.00}]","dockPosition":"{-43.87,400.00,0.00}","parameters":{"AnzahlMalPreis":"4","BreiteWare":"217","DickeWare":"20","LegeAbstand":"10","TiefeWare":"350"}},{"children":[],"componentId":"umdasch:HerrenAnzughose02","dockChild":"{0.00,-(0.00),0.00}","dockParent":"[{(-((Achse/2.00))+2.00),-(-(Tiefe)),0.00},{((Achse/2.00)-2.00),-(-(Tiefe)),0.00}]","dockPosition":"{175.81,400.00,0.00}","parameters":{"AnzahlMalPreis":"3","BreiteWare":"223","DickeWare":"20","LegeAbstand":"10","TiefeWare":"350"}}],"componentId":"umdasch:260814","dockChild":"{0.00,-(0.00),0.00}","dockParent":"[{(0.00-0.00),(-((-(Wandabstand)-30.00))-0.00),((Hoehe-150.00)-0.00)}]","dockPosition":"{0.00,110.00,1900.00}","parameters":{"Achse":"625.00","Fachboden":"umdasch:S04","Konsole":"umdasch:B07","Profil":"umdasch:M05","Tiefe":"400.00"}},{"children":[],"componentId":"umdasch:266037","dockChild":"{0.00,-(16.00),1000.00}","dockParent":"[{0.00,-((-(Wandabstand)-14.00)),1000.00}]","dockPosition":"{0.00,94.00,1000.00}","parameters":{"Achse":"625.00","Hoehe":"2050.00","Oberflaeche":"umdasch:K12","Wandabstand":"80"}},{"children":[{"children":[],"componentId":"umdasch:DamenBlazer03h","dockChild":"{0.00,-(0.00),0.00}","dockParent":"[{-(((Achse-10.00)/2.00)),-(-((Tiefe-8.00))),3.00},{((Achse-10.00)/2.00),-(-((Tiefe-8.00))),3.00}]","dockPosition":"{-239.13,392.00,3.00}","parameters":{"AnzahlMalPreis":"1","BreiteBuegel":"125","BreiteWare":"525","BuegelJaNein":"umdasch:Ja","DickeWare":"40","FarbeBuegel":"umdasch:X65","HaengeAbstand":"20","HoeheWare":"700"}},{"children":[],"componentId":"umdasch:HerrenJackets01h","dockChild":"{0.00,-(0.00),0.00}","dockParent":"[{-(((Achse-10.00)/2.00)),-(-((Tiefe-8.00))),3.00},{((Achse-10.00)/2.00),-(-((Tiefe-8.00))),3.00}]","dockPosition":"{-130.29,392.00,3.00}","parameters":{"AnzahlMalPreis":"1","BreiteBuegel":"100","BreiteWare":"410","BuegelJaNein":"umdasch:Ja","DickeWare":"20","FarbeBuegel":"umdasch:X65","HaengeAbstand":"40","HoeheWare":"601"}},{"children":[],"componentId":"umdasch:HerrenJeans03h","dockChild":"{0.00,-(0.00),0.00}","dockParent":"[{-(((Achse-10.00)/2.00)),-(-((Tiefe-8.00))),3.00},{((Achse-10.00)/2.00),-(-((Tiefe-8.00))),3.00}]","dockPosition":"{4.95,392.00,3.00}","parameters":{"AnzahlMalPreis":"1","BreiteBuegel":"300","BreiteWare":"600","BuegelJaNein":"umdasch:Ja","DickeWare":"20","FarbeBuegel":"umdasch:X65","HaengeAbstand":"40","HoeheWare":"1000"}}],"componentId":"umdasch:480368","dockChild":"{0.00,-(0.00),0.00}","dockParent":"[{(0.00-0.00),(-((-(Wandabstand)-30.00))-0.00),((Hoehe-150.00)-400.00)}]","dockPosition":"{0.00,110.00,1500.00}","parameters":{"Achse":"625.00","Konfektionsstange":"umdasch:M05","Konsole":"umdasch:B07","Tiefe":"400.00"}}],"componentId":"umdasch:CE250-0","dockChild":"","dockParent":"","dockPosition":"","parameters":{"Achse":"625.00","Hoehe":"2050.00","Staender":"umdasch:B01","Wandabstand":"80"}}';
+    });
+</script>
+</body>
+</html>
