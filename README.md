@@ -145,7 +145,7 @@ The language of the configurator can be set as argument of the RoomleConfigurati
 | `pl` | Polish |
 | `ru` | Russian |
 
-See the documentation for more functions: [docs/js/api.md](docs/js/api.md)
+See the documentation for more functions: [docs/markdown/js/api.md](docs/markdown/js/api.md)
 
 ### Connecting your configurator with our iOS App
 To give the user the best available UX we recommend to connect your configurator with our iOS App. If a user starts to configure he can do this in our optimized iOS App. To enable iOS you have to provide the following data to the configurator
