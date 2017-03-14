@@ -39,7 +39,7 @@ The easiest way to integrate the Roomle Configurator API is to see a simple exam
 			document.addEventListener('DOMContentLoaded', function() {
 				roomleConfButton.addEventListener('click', function() {
 				    var options = {}; // Available options can be found in the api docs and in the examples
-					RoomleConfigurator.init('roomleContainer', 'en', 'fantoni_1:FW_Singledesk:04F48A98A90AF8E94844F60B4BCB15164B32A6A76C7C09A876A9605CBDD9E8FE', options, successCallback);
+					RoomleConfigurator.init('CONFIGURATOR-ID', 'roomleContainer', 'fantoni_1:FW_Singledesk:04F48A98A90AF8E94844F60B4BCB15164B32A6A76C7C09A876A9605CBDD9E8FE', options, function() { console.log('init:success'); });
 				});
 			});
 		</script>
