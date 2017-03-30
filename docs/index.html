@@ -97,8 +97,8 @@
     $(document).ready(function () {
         RoomleConfigurator.init('design-bestseller', 'roomle-container',
                 //'{"componentId":"usm:frame"}',
-                {isTag: true, tag: "usm_root"},
-
+                //{isTag: true, tag: "usm_root"},
+                {isItem: true, id:'usm:USMSmallLowboard'},
                 {
                     //RoomleConfigurator.init('design-bestseller', 'roomle-container', '{"componentId":"usm:frame"}', {
                     locale: 'en',
@@ -119,7 +119,7 @@
 
                 }, function () {
                     //RoomleConfigurator.setOptions();
-                    RoomleConfigurator.setWebshopCallbackUrl('http://localhost?locale=de&configuration=__CONF_ID__');
+                    RoomleConfigurator.setWebshopCallbackUrl('http://localhost?locale=de&configuration=__CONFID__');
                     RoomleConfigurator.setFullscreenListener(function () {
                         var elem = document.getElementById('roomle-container');
                         var req = elem.requestFullScreen || elem.webkitRequestFullScreen || elem.mozRequestFullScreen;

@@ -786,6 +786,11 @@ window.RoomleConfigurator = (function (win, doc) {
                     return;
                 }
 
+                if (configuration.isItem) {
+                    self.loadItem(configuration.id);
+                    return;
+                }
+
                 var isId = (typeof configuration === 'string' && configuration[0] !== '{');
                 if (isId) {
                     self.loadConfigurationId(configuration);
@@ -906,6 +911,25 @@ window.RoomleConfigurator = (function (win, doc) {
             var conversationId = privateObject._registerCallbacks(functionName, successCallback, errorCallback);
             var isId = true;
             privateObject._sendToRoomle(['loadConfigurationId', conversationId, configuration, isId]);
+        },
+
+        /**
+         * Sends a item to the iframe and initializes the Roomle Configurator with this scene. Every call of loadItem
+         * discards the actual scene and reinitializes the Roomle Configurator with the new configuration
+         * @memberof RoomleConfigurator
+         * @param {string} The id which should be loaded.
+         * @param {successCallback} [successCallback=defaultSuccessCallback] successCallback - The callback that handles the response.
+         * @param {errorCallback} [errorCallback=defaultErrorCallback] errorCallback - The callback that handles the response.
+         * @return {void}
+         */
+        loadItem: function (id, successCallback, errorCallback) {
+            if (!privateObject._isAvailable('loadItem', true)) {
+                return;
+            }
+            var functionName = 'loadItem';
+            successCallback = successCallback || privateObject._fallbackSuccessCallback;
+            var conversationId = privateObject._registerCallbacks(functionName, successCallback, errorCallback);
+            privateObject._sendToRoomle(['loadItem', conversationId, id]);
         },
 
 

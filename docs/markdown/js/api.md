@@ -26,6 +26,7 @@ outside of the Roomle Configurator Module</p>
     * [.initWithoutWebGl(id, [initWithoutWebGlCallback])](#RoomleConfigurator.initWithoutWebGl) ⇒ <code>void</code>
     * [.loadConfiguration(The, [successCallback], [errorCallback])](#RoomleConfigurator.loadConfiguration) ⇒ <code>void</code>
     * [.loadComponent(The, [successCallback], [errorCallback])](#RoomleConfigurator.loadComponent) ⇒ <code>void</code>
+    * [.loadItem(The, [successCallback], [errorCallback])](#RoomleConfigurator.loadItem) ⇒ <code>void</code>
     * [.loadTag(The, [successCallback], [errorCallback])](#RoomleConfigurator.loadTag) ⇒ <code>void</code>
     * [.setContainerId(The, [successCallback], [errorCallback])](#RoomleConfigurator.setContainerId) ⇒ <code>void</code>
     * [.getCurrentParts(successCallback, [errorCallback])](#RoomleConfigurator.getCurrentParts)
@@ -116,6 +117,20 @@ used in a configuration. Sending the same component again will overwrite the old
 | The | <code>string</code> &#124; <code>Object</code> |  | component which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the component |
 | [successCallback] | <code>scbLoadComponent</code> | <code>defaultSuccessCallback</code> | successCallback - The callback that handles the response. |
 | [errorCallback] | <code>errorCallback</code> | <code>defaultErrorCallback</code> | errorCallback - The callback that handles the error. |
+
+<a name="RoomleConfigurator.loadItem"></a>
+
+### RoomleConfigurator.loadItem(The, [successCallback], [errorCallback]) ⇒ <code>void</code>
+Sends a item to the iframe and initializes the Roomle Configurator with this scene. Every call of loadItem
+discards the actual scene and reinitializes the Roomle Configurator with the new configuration
+
+**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| The | <code>string</code> |  | id which should be loaded. |
+| [successCallback] | <code>successCallback</code> | <code>defaultSuccessCallback</code> | successCallback - The callback that handles the response. |
+| [errorCallback] | <code>errorCallback</code> | <code>defaultErrorCallback</code> | errorCallback - The callback that handles the response. |
 
 <a name="RoomleConfigurator.loadTag"></a>
 
