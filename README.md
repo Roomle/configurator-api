@@ -153,7 +153,7 @@ To give the user the best available UX we recommend to connect your configurator
 * init the configurator with options.enableIOS = true
 * set the webshop callback url with the method setWebshopCallbackUrl
 
-After the user finished configuring he will be redirected to the callback url provided by the setWebshopCallbackUrl method. The actual configuration ID will be inserted in the URL. Therefore the placeholder __CONF_ID__ is replaced.
+After the user finished configuring he will be redirected to the callback url provided by the setWebshopCallbackUrl method. The actual configuration ID will be inserted in the URL. Therefore the placeholder __CONFID__ is replaced.
 
 
 ### Best practice Integration
