@@ -824,16 +824,22 @@ window.RoomleConfigurator = (function (win, doc) {
          * @param {scbInitWithoutWebGl} [initWithoutWebGlCallback] This callback is called when Roomle is ready
          * @return {void}
          */
-        initWithoutWebGl: function (id, initWithoutWebGlCallback) {
+
+        initWithoutWebGl: function (configuratorId, htmlId, options, initWithoutWebGlCallback, initWithoutWebGlCallbackError) {
             var rapiOnly = true;
-            privateObject._init(id, null, initWithoutWebGlCallback, rapiOnly, function () {
+            options = options || {};
+            privateObject._init(configuratorId, htmlId, {}, initWithoutWebGlCallback, options, rapiOnly, function () {
                 privateObject._finishedInit();
 
                 if (typeof initWithoutWebGlCallback === 'function') {
                     initWithoutWebGlCallback();
                 }
             }, function (error) {
-                privateObject._throwError(error);
+                if (typeof initWithoutWebGlCallbackError === 'function') {
+                    initWithoutWebGlCallbackError(error);
+                } else {
+                    privateObject._throwError(error);
+                }
             });
         },
         /**

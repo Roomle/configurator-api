@@ -95,89 +95,99 @@
         isFullscreen: false
     };
     $(document).ready(function () {
-        RoomleConfigurator.init('design-bestseller', 'roomle-container',
-                //'{"componentId":"usm:frame"}',
-                //{isTag: true, tag: "usm_root"},
-                {isItem: true, id:'usm:USMSmallLowboard'},
-                {
-                    //RoomleConfigurator.init('design-bestseller', 'roomle-container', '{"componentId":"usm:frame"}', {
-                    locale: 'en',
-                    sameOrigin: false, // ONLY SET THIS IF YOU EMBED THE CONFIGURATOR ON THE SAME ORIGIN AS THE ROOMLE API
-                    enableIOS: true,
-                    hideShare: false,
-                    showArButton: true,
-                    showAddButton: true,
-                    showBackButton: false,
-                    enablePrint: true,
-                    __alternativeUrl: 'https://alpha.roomle.com/app/',
-                    priceFormatter: function (currency, price) {
-                        return '# ' + currency + ' --> ' + price;
-                    },
-                    dimensionsFormatter: function (dimensions) {
-                        return (dimensions.x).toFixed(0) + ' x ' + (dimensions.y).toFixed(0) + ' x ' + (dimensions.z).toFixed(0) + ' mm';
-                    }
 
-                }, function () {
-                    //RoomleConfigurator.setOptions();
-                    RoomleConfigurator.setWebshopCallbackUrl('http://localhost?locale=de&configuration=__CONFID__');
-                    RoomleConfigurator.setFullscreenListener(function () {
-                        var elem = document.getElementById('roomle-container');
-                        var req = elem.requestFullScreen || elem.webkitRequestFullScreen || elem.mozRequestFullScreen;
-                        if (state.isFullscreen) {
-                            if (document.cancelFullScreen) {
-                                document.cancelFullScreen();
-                            } else if (document.mozCancelFullScreen) {
-                                document.mozCancelFullScreen();
-                            } else if (document.webkitCancelFullScreen) {
-                                document.webkitCancelFullScreen();
-                            }
-                        } else {
-                            req.call(elem);
-                        }
-                        state.isFullscreen = !state.isFullscreen;
-                    });
+        debugger;
 
-                    var shareLinkGenerator = {
-                        protocol: 'https://',
-                        url: 'short.co/',
-                        create: function (configurationId) {
-                            var self = this;
-                            setTimeout(function () {
-                                RoomleConfigurator.setShareLink(self.protocol + self.url + configurationId);
-                            }, 3000);
-                        }
-                    };
+        RoomleConfigurator.initWithoutWebGl('design-bestseller', 'roomle-container', {}, function () {
+            RoomleConfigurator.getPerspectiveImage('umdasch:263233:E4B6E78BD7CD80EDECE1188AAB92FA87013EB8A392C4C45E81BD8CC94C6DD44D', function(imageUrl) {
+               console.log(imageUrl)
+            });
+        }, function () {
+            debugger;
+        });
+        /* RoomleConfigurator.init('design-bestseller', 'roomle-container',
+         //'{"componentId":"usm:frame"}',
+         //{isTag: true, tag: "usm_root"},
+         {isItem: true, id:'usm:USMSmallLowboard'},
+         {
+         //RoomleConfigurator.init('design-bestseller', 'roomle-container', '{"componentId":"usm:frame"}', {
+         locale: 'en',
+         sameOrigin: false, // ONLY SET THIS IF YOU EMBED THE CONFIGURATOR ON THE SAME ORIGIN AS THE ROOMLE API
+         enableIOS: true,
+         hideShare: false,
+         showArButton: true,
+         showAddButton: true,
+         showBackButton: false,
+         enablePrint: true,
+         __alternativeUrl: 'https://alpha.roomle.com/app/',
+         priceFormatter: function (currency, price) {
+         return '# ' + currency + ' --> ' + price;
+         },
+         dimensionsFormatter: function (dimensions) {
+         return (dimensions.x).toFixed(0) + ' x ' + (dimensions.y).toFixed(0) + ' x ' + (dimensions.z).toFixed(0) + ' mm';
+         }
 
-                    RoomleConfigurator.setShareButtonClickedCallback(function (id) {
-                        shareLinkGenerator.create(id);
-                    });
+         }, function () {
+         //RoomleConfigurator.setOptions();
+         RoomleConfigurator.setWebshopCallbackUrl('http://localhost?locale=de&configuration=__CONFID__');
+         RoomleConfigurator.setFullscreenListener(function () {
+         var elem = document.getElementById('roomle-container');
+         var req = elem.requestFullScreen || elem.webkitRequestFullScreen || elem.mozRequestFullScreen;
+         if (state.isFullscreen) {
+         if (document.cancelFullScreen) {
+         document.cancelFullScreen();
+         } else if (document.mozCancelFullScreen) {
+         document.mozCancelFullScreen();
+         } else if (document.webkitCancelFullScreen) {
+         document.webkitCancelFullScreen();
+         }
+         } else {
+         req.call(elem);
+         }
+         state.isFullscreen = !state.isFullscreen;
+         });
+
+         var shareLinkGenerator = {
+         protocol: 'https://',
+         url: 'short.co/',
+         create: function (configurationId) {
+         var self = this;
+         setTimeout(function () {
+         RoomleConfigurator.setShareLink(self.protocol + self.url + configurationId);
+         }, 3000);
+         }
+         };
+
+         RoomleConfigurator.setShareButtonClickedCallback(function (id) {
+         shareLinkGenerator.create(id);
+         });
 
 
-                    RoomleConfigurator.addConfigurationLoadedListener(function () {
-                        RoomleConfigurator.getCurrentParts(function (parts) {
-                            console.log('parts');
-                            console.log(parts);
-                        });
-                    });
+         RoomleConfigurator.addConfigurationLoadedListener(function () {
+         RoomleConfigurator.getCurrentParts(function (parts) {
+         console.log('parts');
+         console.log(parts);
+         });
+         });
 
-                    //RoomleConfigurator.setAddToCartListener(function (cartItem) {
-                    RoomleConfigurator.setAddToCartListener(
-                            //{backgroundColor: '#ff0000', fontColor: '#ff00ff', text: 'CHECKOUT', visible: true},
-                            {
-                                visible: true,
-                                images: {
-                                    perspectiveImageSize: 1000, // optional
-                                    pixelPerMeter: 200 // optional
-                                }
-                            },
-                            function (cartItem) {
-                                console.log('setAddToCartListener');
-                                console.log(cartItem);
-                            }, function (error) {
-                                console.log('HAHA caught error setAddToCartListener "' + error + '"');
-                            });
-                });
-
+         //RoomleConfigurator.setAddToCartListener(function (cartItem) {
+         RoomleConfigurator.setAddToCartListener(
+         //{backgroundColor: '#ff0000', fontColor: '#ff00ff', text: 'CHECKOUT', visible: true},
+         {
+         visible: true,
+         images: {
+         perspectiveImageSize: 1000, // optional
+         pixelPerMeter: 200 // optional
+         }
+         },
+         function (cartItem) {
+         console.log('setAddToCartListener');
+         console.log(cartItem);
+         }, function (error) {
+         console.log('HAHA caught error setAddToCartListener "' + error + '"');
+         });
+         });
+         */
         $('#init').click(function () {
             //umdasch:Universal01
             // umdasch:VARO-124
