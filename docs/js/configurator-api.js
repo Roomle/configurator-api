@@ -1346,6 +1346,29 @@ window.RoomleConfigurator = (function (win, doc) {
          */
 
         /**
+         * Used to get the data of a component with its ID
+         * @memberof RoomleConfigurator
+         * @param {scbGetComponentData} successCallback - The callback that handles the response.
+         * @param {errorCallback} [errorCallback=defaultErrorCallback] errorCallback - The callback that handles the response.
+         */
+        getComponentData: function (id, successCallback, errorCallback) {
+            var functionName = 'getComponentData'; // this is just for debugging purpose! So the user knows where he forgot to add some callback
+            if (!privateObject._isAvailable(functionName, false)) {
+                return errorCallback(privateObject._error(functionName + ' is not available without webgl'));
+            }
+
+            var conversationId = privateObject._registerCallbacks(functionName, successCallback, errorCallback);
+            privateObject._sendToRoomle(['getComponentData', conversationId, id]);
+        },
+        /**
+         * Success callback for scbGetComponentData. It passes the data of the component
+         * to the caller
+         * @memberof UserCallbacks
+         * @callback scbGetComponentData
+         * @param {object} data of the component
+         */
+
+        /**
          * Used to get inform the configurator that fullscreen changed from outside
          * @memberof RoomleConfigurator
          */
