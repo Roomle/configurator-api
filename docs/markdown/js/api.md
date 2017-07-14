@@ -41,6 +41,8 @@ outside of the Roomle Configurator Module</p>
     * [.generateBase64ImagesOfCurrentConfiguration(options, successCallback, [errorCallback])](#RoomleConfigurator.generateBase64ImagesOfCurrentConfiguration)
     * [.generateImagesOfCurrentConfiguration(successCallback, [errorCallback])](#RoomleConfigurator.generateImagesOfCurrentConfiguration)
     * [.getCurrentConfiguration(successCallback, [errorCallback])](#RoomleConfigurator.getCurrentConfiguration)
+    * [.getObjectData(successCallback, [errorCallback])](#RoomleConfigurator.getObjectData)
+    * [.getComponentData(successCallback, [errorCallback])](#RoomleConfigurator.getComponentData)
     * [.toggleFullscreen()](#RoomleConfigurator.toggleFullscreen)
     * [.getCurrentConfigurationId(successCallback, [errorCallback])](#RoomleConfigurator.getCurrentConfigurationId)
     * [.setWebshopCallbackUrl(url)](#RoomleConfigurator.setWebshopCallbackUrl)
@@ -315,6 +317,30 @@ Used to get the current configuration. It returns the configuration and the hash
 | successCallback | <code>scbGetCurrentConfiguration</code> |  | The callback that handles the response. |
 | [errorCallback] | <code>errorCallback</code> | <code>defaultErrorCallback</code> | errorCallback - The callback that handles the response. |
 
+<a name="RoomleConfigurator.getObjectData"></a>
+
+### RoomleConfigurator.getObjectData(successCallback, [errorCallback])
+Used to get the data of an object with its ID
+
+**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| successCallback | <code>scbGetObjectData</code> |  | The callback that handles the response. |
+| [errorCallback] | <code>errorCallback</code> | <code>defaultErrorCallback</code> | errorCallback - The callback that handles the response. |
+
+<a name="RoomleConfigurator.getComponentData"></a>
+
+### RoomleConfigurator.getComponentData(successCallback, [errorCallback])
+Used to get the data of a component with its ID
+
+**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| successCallback | <code>scbGetComponentData</code> |  | The callback that handles the response. |
+| [errorCallback] | <code>errorCallback</code> | <code>defaultErrorCallback</code> | errorCallback - The callback that handles the response. |
+
 <a name="RoomleConfigurator.toggleFullscreen"></a>
 
 ### RoomleConfigurator.toggleFullscreen()
@@ -489,6 +515,8 @@ by the user of the API
     * [.scbGenerateImagesOfCurrentConfiguration](#UserCallbacks.scbGenerateImagesOfCurrentConfiguration) : <code>function</code>
     * [.scbGenerateImagesOfCurrentConfiguration](#UserCallbacks.scbGenerateImagesOfCurrentConfiguration) : <code>function</code>
     * [.scbGetCurrentConfiguration](#UserCallbacks.scbGetCurrentConfiguration) : <code>function</code>
+    * [.scbGetObjectData](#UserCallbacks.scbGetObjectData) : <code>function</code>
+    * [.scbGetComponentData](#UserCallbacks.scbGetComponentData) : <code>function</code>
     * [.scbGetCurrentConfigurationId](#UserCallbacks.scbGetCurrentConfigurationId) : <code>function</code>
     * [.scbGetCurrentDimensions](#UserCallbacks.scbGetCurrentDimensions) : <code>function</code>
     * [.scbSaveCurrentConfiguration](#UserCallbacks.scbSaveCurrentConfiguration) : <code>function</code>
@@ -648,6 +676,30 @@ to the caller
 | Param | Type | Description |
 | --- | --- | --- |
 | configuration | <code>object</code> | the actual configuration as object. It is just JSON.parse(configurationString) |
+
+<a name="UserCallbacks.scbGetObjectData"></a>
+
+### UserCallbacks.scbGetObjectData : <code>function</code>
+Success callback for scbGetObjectData. It passes the data of the object
+to the caller
+
+**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>object</code> | of the object |
+
+<a name="UserCallbacks.scbGetComponentData"></a>
+
+### UserCallbacks.scbGetComponentData : <code>function</code>
+Success callback for scbGetComponentData. It passes the data of the component
+to the caller
+
+**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>object</code> | of the component |
 
 <a name="UserCallbacks.scbGetCurrentConfigurationId"></a>
 
