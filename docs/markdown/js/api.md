@@ -66,13 +66,13 @@ e.g. <div id="roomle-configurator-container"></div>. The innerHTML of the contai
 will be replaced with the Roomle Configurator Iframe which then loads the configurator.
 The configurator starts with a blank scene which means there is only a blank canvas.
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | configuratorId | <code>string</code> | the id of the configurator. You get this ID from Roomle. Without this ID you can not use the configurator |
 | htmlId | <code>string</code> | corresponding HTML id of a container element which should hold the Roomle Configurator iframe |
-| [configuration] | <code>string</code> &#124; <code>Object</code> | The configuration which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the configuration |
+| [configuration] | <code>string</code> \| <code>Object</code> | The configuration which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the configuration |
 | options | <code>Object</code> | The options which can be passed to the configurator. Right now you can change the locale with {locale: lang}. If you need no options just provide null. For lang you can use ['en', 'de', 'zh-Hans', 'it', 'fr', 'es', 'hi', 'ja', 'pt', 'pt-BR', 'pl', 'ru'] |
 | [initCallback] | <code>scbInit</code> | This callback is called when Roomle 3D Editor is ready |
 | [errorCallback] | <code>ecbInit</code> | This callback is called when init has errors... |
@@ -85,7 +85,7 @@ e.g. <div id="roomle-configurator-container"></div>. The innerHTML of the contai
 will be replaced with the Roomle Configurator Iframe. The Iframe is needed for the communication with
 the roomle backend.
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -98,11 +98,11 @@ the roomle backend.
 Sends a configuration to the iframe and initializes the Roomle Configurator with this scene. Every call of loadConfiguration
 discards the actual scene and reinitializes the Roomle Configurator with the new configuration
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| The | <code>string</code> &#124; <code>Object</code> |  | configuration which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the configuration |
+| The | <code>string</code> \| <code>Object</code> |  | configuration which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the configuration |
 | [successCallback] | <code>successCallback</code> | <code>defaultSuccessCallback</code> | successCallback - The callback that handles the response. |
 | [errorCallback] | <code>errorCallback</code> | <code>defaultErrorCallback</code> | errorCallback - The callback that handles the response. |
 
@@ -112,11 +112,11 @@ discards the actual scene and reinitializes the Roomle Configurator with the new
 Sends a component to the iframe and loads the component to the Roomle Kernel. After this, the component can be
 used in a configuration. Sending the same component again will overwrite the old version in the Roomle Kernel
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| The | <code>string</code> &#124; <code>Object</code> |  | component which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the component |
+| The | <code>string</code> \| <code>Object</code> |  | component which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the component |
 | [successCallback] | <code>scbLoadComponent</code> | <code>defaultSuccessCallback</code> | successCallback - The callback that handles the response. |
 | [errorCallback] | <code>errorCallback</code> | <code>defaultErrorCallback</code> | errorCallback - The callback that handles the error. |
 
@@ -126,7 +126,7 @@ used in a configuration. Sending the same component again will overwrite the old
 Sends a item to the iframe and initializes the Roomle Configurator with this scene. Every call of loadItem
 discards the actual scene and reinitializes the Roomle Configurator with the new configuration
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -139,11 +139,11 @@ discards the actual scene and reinitializes the Roomle Configurator with the new
 ### RoomleConfigurator.loadTag(The, [successCallback], [errorCallback]) ⇒ <code>void</code>
 Loads a tag from a roomle catalog to display possible configurations before the user starts
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| The | <code>string</code> &#124; <code>Object</code> |  | configuration which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the configuration |
+| The | <code>string</code> \| <code>Object</code> |  | configuration which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the configuration |
 | [successCallback] | <code>successCallback</code> | <code>defaultSuccessCallback</code> | successCallback - The callback that handles the response. |
 | [errorCallback] | <code>errorCallback</code> | <code>defaultErrorCallback</code> | errorCallback - The callback that handles the response. |
 
@@ -152,7 +152,7 @@ Loads a tag from a roomle catalog to display possible configurations before the 
 ### RoomleConfigurator.setContainerId(The, [successCallback], [errorCallback]) ⇒ <code>void</code>
 Sends the used containter to Roomle so we can perform fullscreen etc
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -166,7 +166,7 @@ Sends the used containter to Roomle so we can perform fullscreen etc
 Calls the successCallback with the parts of the current configuration. If there is an error the
 error callback is called with an error number and an error message
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -179,7 +179,7 @@ error callback is called with an error number and an error message
 Calls the successCallback with an cart object {id: id, visible: true/false } If there is an error the
 error callback is called with an error number and an error message
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -192,7 +192,7 @@ error callback is called with an error number and an error message
 ### RoomleConfigurator.setFullscreenListener(listener)
 Defines a callback for the embedder to inform when a user clicks on the fullscreen button
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -205,7 +205,7 @@ Calls the successCallback with the parts of the id configuration. If there is an
 error callback is called with an error number and an error message. This call retrieves information from roomle
 backend, therefore expact higher latency at the first call
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -219,7 +219,7 @@ backend, therefore expact higher latency at the first call
 Calls the successCallback with the price and the currency symbol to a given configuration id.  This call
 retrieves information from roomle backend, therefore expact higher latency at the first call
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -233,7 +233,7 @@ retrieves information from roomle backend, therefore expact higher latency at th
 Calls the successCallback with the url to the perspective image to a given configuration id. This call retrieves
 information from roomle backend, therefore expact higher latency at the first call
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -247,7 +247,7 @@ information from roomle backend, therefore expact higher latency at the first ca
 Calls the successCallback with the url to the top image to a given configuration id. This call retrieves
 information from roomle backend, therefore expact higher latency at the first call
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -260,7 +260,7 @@ information from roomle backend, therefore expact higher latency at the first ca
 ### RoomleConfigurator.getCurrentPrice(successCallback, [errorCallback])
 Used to get the price of the current configuration
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -272,7 +272,7 @@ Used to get the price of the current configuration
 ### RoomleConfigurator.addToCart(successCallback, [errorCallback])
 Used to get the current cart item. The configuration is saved to the server so expect high latency
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -284,7 +284,7 @@ Used to get the current cart item. The configuration is saved to the server so e
 ### RoomleConfigurator.generateBase64ImagesOfCurrentConfiguration(options, successCallback, [errorCallback])
 Used to get top image and the perspective image of the actual configuration as base64. The images are NOT stored to the server
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -298,7 +298,7 @@ Used to get top image and the perspective image of the actual configuration as b
 Used to get top image and the perspective image of the actual configuration. The images are stored to the server
 and the URL is returned. This goes over the web so expect higher latecy
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -310,7 +310,7 @@ and the URL is returned. This goes over the web so expect higher latecy
 ### RoomleConfigurator.getCurrentConfiguration(successCallback, [errorCallback])
 Used to get the current configuration. It returns the configuration and the hash
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -322,7 +322,7 @@ Used to get the current configuration. It returns the configuration and the hash
 ### RoomleConfigurator.getObjectData(successCallback, [errorCallback])
 Used to get the data of an object with its ID
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -334,7 +334,7 @@ Used to get the data of an object with its ID
 ### RoomleConfigurator.getComponentData(successCallback, [errorCallback])
 Used to get the data of a component with its ID
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -346,13 +346,13 @@ Used to get the data of a component with its ID
 ### RoomleConfigurator.toggleFullscreen()
 Used to get inform the configurator that fullscreen changed from outside
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 <a name="RoomleConfigurator.getCurrentConfigurationId"></a>
 
 ### RoomleConfigurator.getCurrentConfigurationId(successCallback, [errorCallback])
 Used to get the current configuration id, therefore the data needs to be presisted to the roomle db. Expect higher latency because this needs to go through the web
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -364,7 +364,7 @@ Used to get the current configuration id, therefore the data needs to be presist
 ### RoomleConfigurator.setWebshopCallbackUrl(url)
 Used to get the current configuration id, therefore the data needs to be presisted to the roomle db. Expect higher latency because this needs to go through the web
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -375,7 +375,7 @@ Used to get the current configuration id, therefore the data needs to be presist
 ### RoomleConfigurator.setShareButtonClickedCallback(callback)
 Sets the callback which is triggered when the user clicks on the share button
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -386,7 +386,7 @@ Sets the callback which is triggered when the user clicks on the share button
 ### RoomleConfigurator.setShareLink(url)
 Sets the url of the share pop up, this should be called "inside" the setShareButtonClickedCallback
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -397,7 +397,7 @@ Sets the url of the share pop up, this should be called "inside" the setShareBut
 ### RoomleConfigurator.openPrint(imageSize, convertFunctions)
 Used to open the print dialog
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -409,7 +409,7 @@ Used to open the print dialog
 ### RoomleConfigurator.getCurrentDimensions(successCallback, [errorCallback])
 Used to get the dimensions of the current configuration
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -421,7 +421,7 @@ Used to get the dimensions of the current configuration
 ### RoomleConfigurator.saveCurrentConfiguration(successCallback, [errorCallback])
 Used to save the current configuration to the roomle backend, also the generated images are presisted! This request goes over the web so expect higher latency
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -433,7 +433,7 @@ Used to save the current configuration to the roomle backend, also the generated
 ### RoomleConfigurator.didCheckout(cart, successCallback, [errorCallback])
 When the user is doing his checkout you have to call this function. The cart is an array of cart items
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -446,7 +446,7 @@ When the user is doing his checkout you have to call this function. The cart is 
 ### RoomleConfigurator.addChangeListener(callback) ⇒ <code>number</code>
 Used to register a change listener to the configuration. The callback is always called when the configuration changes
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 **Returns**: <code>number</code> - they key where the listener is stored. Use this key to remove the listener  
 
 | Param | Type | Description |
@@ -458,13 +458,13 @@ Used to register a change listener to the configuration. The callback is always 
 ### RoomleConfigurator.removeChangeListener()
 Used to remove a change listener to the configuration.
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 <a name="RoomleConfigurator.addConfigurationLoadedListener"></a>
 
 ### RoomleConfigurator.addConfigurationLoadedListener(callback) ⇒ <code>number</code>
 Used to register listener which triggers when the configuration is loaded. The callback is always called when a new configuration is loaded
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 **Returns**: <code>number</code> - they key where the listener is stored. Use this key to remove the listener  
 
 | Param | Type | Description |
@@ -476,18 +476,18 @@ Used to register listener which triggers when the configuration is loaded. The c
 ### RoomleConfigurator.removeConfigurationLoadedListener()
 Used to remove a change listener to the configuration.
 
-**Kind**: static method of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static method of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 <a name="RoomleConfigurator.scbLoadComponent"></a>
 
 ### RoomleConfigurator.scbLoadComponent ⇒ <code>void</code>
 Success callback for loadComponent, the Roomle Kernel returns the component id how it is stored in the Roomle Kernel
 
-**Kind**: static typedef of <code>[RoomleConfigurator](#RoomleConfigurator)</code>  
+**Kind**: static typedef of [<code>RoomleConfigurator</code>](#RoomleConfigurator)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | string |  |  | componentId          /** Sends a configuration to the iframe and initializes the Roomle Configurator with this scene. Every call of loadConfiguration discards the actual scene and reinitializes the Roomle Configurator with the new configuration |
-| The | <code>string</code> &#124; <code>Object</code> |  | configuration which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the configuration |
+| The | <code>string</code> \| <code>Object</code> |  | configuration which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the configuration |
 | [successCallback] | <code>successCallback</code> | <code>defaultSuccessCallback</code> | successCallback - The callback that handles the response. |
 | [errorCallback] | <code>errorCallback</code> | <code>defaultErrorCallback</code> | errorCallback - The callback that handles the response. |
 
@@ -530,25 +530,25 @@ by the user of the API
 ### UserCallbacks.scbInit : <code>function</code>
 Success callback for initCallback, this callback is called when Roomle 3D is ready
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 <a name="UserCallbacks.ecbInit"></a>
 
 ### UserCallbacks.ecbInit : <code>function</code>
 Error callback when init fails
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 <a name="UserCallbacks.scbInitWithoutWebGl"></a>
 
 ### UserCallbacks.scbInitWithoutWebGl : <code>function</code>
 Success callback for initWithoutWebGlCallback, this callback is called when Roomle 3D is ready
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 <a name="UserCallbacks.scbGetCurrentParts"></a>
 
 ### UserCallbacks.scbGetCurrentParts : <code>function</code>
 Success callback for getCurrentParts, the parts are returned as an array of objects. Each object is a part
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type |
 | --- | --- |
@@ -559,7 +559,7 @@ Success callback for getCurrentParts, the parts are returned as an array of obje
 ### UserCallbacks.scbAddAddToCartListener : <code>function</code>
 Success callback for scbAddAddToCartListener, the cart object {id: id, visible: true/false } is returned
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type |
 | --- | --- |
@@ -570,13 +570,13 @@ Success callback for scbAddAddToCartListener, the cart object {id: id, visible: 
 ### UserCallbacks.fullScreenListener : <code>function</code>
 This listener is triggered when the user clicks on the fullscreen button
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 <a name="UserCallbacks.scbGetParts"></a>
 
 ### UserCallbacks.scbGetParts : <code>function</code>
 Success callback for getCurrentParts, the parts are returned as an array of objects. Each object is a part
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type |
 | --- | --- |
@@ -587,7 +587,7 @@ Success callback for getCurrentParts, the parts are returned as an array of obje
 ### UserCallbacks.scbGetPrice : <code>function</code>
 Success callback for getPrice, price is returned as a number and the currency is returned as currency symbol
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type |
 | --- | --- |
@@ -599,7 +599,7 @@ Success callback for getPrice, price is returned as a number and the currency is
 ### UserCallbacks.scbGetPerspectiveImage : <code>function</code>
 Success callback for getPerspectiveImage, it passes the url of the perspective image to the user
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -610,7 +610,7 @@ Success callback for getPerspectiveImage, it passes the url of the perspective i
 ### UserCallbacks.scbGetTopImage : <code>function</code>
 Success callback for getTopImage, it passes the url of the perspective image to the user
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -621,7 +621,7 @@ Success callback for getTopImage, it passes the url of the perspective image to 
 ### UserCallbacks.scbGetCurrentPrice : <code>function</code>
 Success callback for getCurrentPrice. It passes price as a number and currency symbol as a character
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -633,7 +633,7 @@ Success callback for getCurrentPrice. It passes price as a number and currency s
 ### UserCallbacks.scbAddToCart : <code>function</code>
 Success callback for addToCart. It passes the cart item
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -645,7 +645,7 @@ Success callback for addToCart. It passes the cart item
 Success callback for generateBase64ImagesOfCurrentConfiguration. It passes topImage and persepctiveImage to the caller
 encoded as base64/png (this is because only strings can passed via iframe)
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -658,7 +658,7 @@ encoded as base64/png (this is because only strings can passed via iframe)
 Success callback for generateImagesOfCurrentConfiguration. It passes topImage and persepctiveImage to the caller
 as the URL pointing to the locations of the images on the server
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -671,7 +671,7 @@ as the URL pointing to the locations of the images on the server
 Success callback for getCurrentConfiguration. It passes configuration as object and the hash of the configuration
 to the caller
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -683,7 +683,7 @@ to the caller
 Success callback for scbGetObjectData. It passes the data of the object
 to the caller
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -695,7 +695,7 @@ to the caller
 Success callback for scbGetComponentData. It passes the data of the component
 to the caller
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -707,7 +707,7 @@ to the caller
 Success callback for getCurrentConfigurationId. It passes configuration as object and the hash of the configuration
 to the caller
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -719,7 +719,7 @@ to the caller
 Success callback for getCurrentDimensions. It passes back the dimensions of the configuration
 to the caller
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type |
 | --- | --- |
@@ -731,7 +731,7 @@ to the caller
 Success callback for saveCurrentConfiguration. It passes back the save configuration object
 to the caller
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -742,14 +742,14 @@ to the caller
 ### UserCallbacks.scbDidCheckout : <code>function</code>
 Success callback for didCheckout
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 <a name="UserCallbacks.cbAddChangeListener"></a>
 
 ### UserCallbacks.cbAddChangeListener : <code>function</code>
 Success callback for getCurrentConfigurationId. It passes configuration as object and the hash of the configuration
 to the caller
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -761,13 +761,13 @@ to the caller
 Success callback for getCurrentConfigurationId. It passes configuration as object and the hash of the configuration
 to the caller
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 <a name="UserCallbacks.errorCallback"></a>
 
 ### UserCallbacks.errorCallback : <code>function</code>
 This callback is displayed as a global member.
 
-**Kind**: static typedef of <code>[UserCallbacks](#UserCallbacks)</code>  
+**Kind**: static typedef of [<code>UserCallbacks</code>](#UserCallbacks)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -792,31 +792,31 @@ This namespace is used to encapsulate all callbacks which are used internally
 ### InternalCallbacks.scbGeneric : <code>function</code>
 Success callback which is saved into our callback map
 
-**Kind**: static typedef of <code>[InternalCallbacks](#InternalCallbacks)</code>  
+**Kind**: static typedef of [<code>InternalCallbacks</code>](#InternalCallbacks)  
 <a name="InternalCallbacks.ecbGeneric"></a>
 
 ### InternalCallbacks.ecbGeneric : <code>function</code>
 Error callback which is saved into our callback map
 
-**Kind**: static typedef of <code>[InternalCallbacks](#InternalCallbacks)</code>  
+**Kind**: static typedef of [<code>InternalCallbacks</code>](#InternalCallbacks)  
 <a name="InternalCallbacks.eventCallback"></a>
 
 ### InternalCallbacks.eventCallback : <code>function</code>
 callback which is called with all params passed by the event
 
-**Kind**: static typedef of <code>[InternalCallbacks](#InternalCallbacks)</code>  
+**Kind**: static typedef of [<code>InternalCallbacks</code>](#InternalCallbacks)  
 <a name="InternalCallbacks.ecbInitInternal"></a>
 
 ### InternalCallbacks.ecbInitInternal : <code>function</code>
 Error callback which is saved into our callback map and called after an error on init
 
-**Kind**: static typedef of <code>[InternalCallbacks](#InternalCallbacks)</code>  
+**Kind**: static typedef of [<code>InternalCallbacks</code>](#InternalCallbacks)  
 <a name="InternalCallbacks.scbInitInternal"></a>
 
 ### InternalCallbacks.scbInitInternal : <code>function</code>
 Success callback which is saved into our callback map and called after init
 
-**Kind**: static typedef of <code>[InternalCallbacks](#InternalCallbacks)</code>  
+**Kind**: static typedef of [<code>InternalCallbacks</code>](#InternalCallbacks)  
 <a name="RoomleConfiguratorPrivate"></a>
 
 ## RoomleConfiguratorPrivate : <code>object</code>
@@ -863,35 +863,35 @@ outside of the Roomle Configurator Module
 ### RoomleConfiguratorPrivate._isLoaded
 is set to true if Roomle Configurator is loaded
 
-**Kind**: static property of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static property of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 **Field**:   
 <a name="RoomleConfiguratorPrivate._isFullscreen"></a>
 
 ### RoomleConfiguratorPrivate._isFullscreen
 is set to true if Roomle Configurator is in fullscreen
 
-**Kind**: static property of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static property of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 **Field**:   
 <a name="RoomleConfiguratorPrivate._rapiOnly"></a>
 
 ### RoomleConfiguratorPrivate._rapiOnly
 this flag indicates if the user only wants to use rapi access or not. If not also 3D editor is called
 
-**Kind**: static property of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static property of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 **Field**:   
 <a name="RoomleConfiguratorPrivate._initInProgress"></a>
 
 ### RoomleConfiguratorPrivate._initInProgress
 this flag indicates if init process is already in progress
 
-**Kind**: static property of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static property of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 **Field**:   
 <a name="RoomleConfiguratorPrivate._getIframeCode"></a>
 
 ### RoomleConfiguratorPrivate._getIframeCode(conversationId, [rapiOlny], configuratorId, [options])
 Getter for the iframe code! ConversationId is important, so that Roomle can response when it is ready
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -905,7 +905,7 @@ Getter for the iframe code! ConversationId is important, so that Roomle can resp
 ### RoomleConfiguratorPrivate._sendToRoomle(command)
 Sends a command to Roomle so Roomle can react to things from the outside
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -916,7 +916,7 @@ Sends a command to Roomle so Roomle can react to things from the outside
 ### RoomleConfiguratorPrivate._callSuccessCallback(expectedArgs, response, conversationId, [preserve])
 Helper function to call the right callback. This is needed because we can only communicate with strings over the iframe
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -930,7 +930,7 @@ Helper function to call the right callback. This is needed because we can only c
 ### RoomleConfiguratorPrivate._callChangeListener(response)
 Helper function to call all change listener.
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -941,7 +941,7 @@ Helper function to call all change listener.
 ### RoomleConfiguratorPrivate._callConfigurationLoadedListener(response)
 Helper function to call all _callConfigurationLoadedListener.
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -953,7 +953,7 @@ Helper function to call all _callConfigurationLoadedListener.
 This function handles responses from Roomle. Because the data returned varies depending on which action caused the response there is a handler function
 which knows what kind of data is expected and forwards this data in the correct format to the callback
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -967,7 +967,7 @@ which knows what kind of data is expected and forwards this data in the correct 
 Convenience method to throw Errors if Roomle configurator encountered an error
 which knows what kind of data is expected and forwards this data in the correct format to the callback
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 **Throws**:
 
 - Exception with the given error message
@@ -982,7 +982,7 @@ which knows what kind of data is expected and forwards this data in the correct 
 ### RoomleConfiguratorPrivate._warn(message)
 Convenience method to warn the user of the API if something is not totally correct.
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -993,7 +993,7 @@ Convenience method to warn the user of the API if something is not totally corre
 ### RoomleConfiguratorPrivate._error(message) ⇒ <code>Error</code>
 Convenience method to create error messages which are given to the user
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 **Returns**: <code>Error</code> - an error with the given error message  
 
 | Param | Type | Description |
@@ -1005,7 +1005,7 @@ Convenience method to create error messages which are given to the user
 ### RoomleConfiguratorPrivate._addSuccessCallback(conversationId, command, data)
 Adds a success callback to the success callback map. The conversation id is used as key, so we can react easyly to every response
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1018,7 +1018,7 @@ Adds a success callback to the success callback map. The conversation id is used
 ### RoomleConfiguratorPrivate._addErrorCallback(conversationId, command, data)
 Adds an error callback to the error callback map. The conversation id is used as key, so we can react easyly to every response
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1031,21 +1031,21 @@ Adds an error callback to the error callback map. The conversation id is used as
 ### RoomleConfiguratorPrivate._nextConversationId() ⇒ <code>number</code>
 Returns the next available conversation id. Always use this function and don't increment _conversationId manually!
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 **Returns**: <code>number</code> - the next available conversation id  
 <a name="RoomleConfiguratorPrivate._nextListenerId"></a>
 
 ### RoomleConfiguratorPrivate._nextListenerId() ⇒ <code>number</code>
 Returns the next available listener id. Always use this function and don't increment _conversationId manually!
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 **Returns**: <code>number</code> - the next available listener id  
 <a name="RoomleConfiguratorPrivate._registerListener"></a>
 
 ### RoomleConfiguratorPrivate._registerListener(functionName, successCallback, errorCallback, specialConversationId)
 registers a change listener. With the returned id the listener can be remove again
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1059,7 +1059,7 @@ registers a change listener. With the returned id the listener can be remove aga
 ### RoomleConfiguratorPrivate._removeListener(listenerId)
 remove a change listener. Therefore you need the id which is returned by addChangeListener
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1070,7 +1070,7 @@ remove a change listener. Therefore you need the id which is returned by addChan
 ### RoomleConfiguratorPrivate._registerEventListener(eventName, callback)
 registers an event listener.
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1082,7 +1082,7 @@ registers an event listener.
 ### RoomleConfiguratorPrivate._removeEventListener(eventName, callback)
 removes an event listener.
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1094,7 +1094,7 @@ removes an event listener.
 ### RoomleConfiguratorPrivate._callEventListener(eventName, args)
 Calls all event listener which are listening to a certain event.
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1106,7 +1106,7 @@ Calls all event listener which are listening to a certain event.
 ### RoomleConfiguratorPrivate._registerConfigurationLoadedListener(functionName, successCallback, errorCallback, specialConversationId)
 registers a change listener which fires when a new configuration is loaded. With the returned id the listener can be remove again
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1120,7 +1120,7 @@ registers a change listener which fires when a new configuration is loaded. With
 ### RoomleConfiguratorPrivate._removeConfigurationLoadedListener(listenerId)
 remove a ConfigurationLoadedListener. Therefore you need the id which is returned by addChangeListener
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1131,7 +1131,7 @@ remove a ConfigurationLoadedListener. Therefore you need the id which is returne
 ### RoomleConfiguratorPrivate._registerCallbacks(functionName, successCallback, errorCallback, [specialConversationId])
 registers the callbacks in the callback map. This is needed to call the correct callback after the response of Roomle is received
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1145,7 +1145,7 @@ registers the callbacks in the callback map. This is needed to call the correct 
 ### RoomleConfiguratorPrivate._receiveFromRoomle(event)
 Helper function which parses the response from Roomle.
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1156,13 +1156,13 @@ Helper function which parses the response from Roomle.
 ### RoomleConfiguratorPrivate._init(configuratorId, id, [configuration], [options], [rapiOnly], [initCallback], successCallback, errorCallback)
 Helper function for initializing roomle.
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | configuratorId | <code>string</code> | The id of the configurator |
 | id | <code>string</code> | corresponding HTML id of a container element which should hold the Roomle Configurator iframe |
-| [configuration] | <code>string</code> &#124; <code>Object</code> | The configuration which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the configuration |
+| [configuration] | <code>string</code> \| <code>Object</code> | The configuration which should be loaded. This can be either a string (with JSON.stringify) or the JSON representation of the configuration |
 | [options] | <code>Object</code> | Options which should be passed to the iframe before roomle is loaded. Right now it is {locale: de} |
 | [rapiOnly] | <code>Boolean</code> | flag which is true if there is no WebGL needed |
 | [initCallback] | <code>scbInit</code> | This callback is called when Roomle 3D Editor is ready |
@@ -1174,13 +1174,13 @@ Helper function for initializing roomle.
 ### RoomleConfiguratorPrivate._finishedInit()
 Helper function which should be called when init is finished.
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 <a name="RoomleConfiguratorPrivate._isAvailable"></a>
 
 ### RoomleConfiguratorPrivate._isAvailable(methodname, needsWebGl) ⇒ <code>boolean</code>
 Helper function to check if method is available. This is mainly used to check if the user tries to access a webgl method but only requested rapi-only
 
-**Kind**: static method of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static method of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 **Returns**: <code>boolean</code> - returns true if method is available and false if not  
 
 | Param | Type | Description |
@@ -1196,7 +1196,7 @@ there is no error callback provided by the user of the function
 the error message will contain the name of the API call which
 is missing an error callback
 
-**Kind**: static typedef of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static typedef of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
 **Throws**:
 
 - Throws an error with the message given
@@ -1214,4 +1214,4 @@ there is no success callback provided by the user of the function
 this fallback is only used if successCallback is optional
 this method is empty on purpose!
 
-**Kind**: static typedef of <code>[RoomleConfiguratorPrivate](#RoomleConfiguratorPrivate)</code>  
+**Kind**: static typedef of [<code>RoomleConfiguratorPrivate</code>](#RoomleConfiguratorPrivate)  
